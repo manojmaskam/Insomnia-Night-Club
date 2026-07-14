@@ -16,7 +16,8 @@
 html {
   /* 1rem = 10px at 1920w; scales proportionally below */
   font-size: calc(min(100vw, 1920px) / 192);
-  scroll-behavior: smooth;
+  /* no CSS smooth-scroll: it fights Lenis (double-smoothing = lag);
+     JS falls back to scrollIntoView({behavior:'smooth'}) when Lenis is absent */
 }
 
 body {
@@ -456,9 +457,10 @@ ul { list-style: none; }
   position: absolute;
   left: 0; right: 0; bottom: 0;
   height: var(--lh, 19.8rem);
-  background: rgba(23, 23, 23, .06);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
+  /* no backdrop-filter here: blurring under a track that moves every frame
+     forces constant re-rasterization — the design's blurred host card is
+     baked into its image file instead (serv_host_blur.jpg) */
+  background: linear-gradient(180deg, rgba(23,23,23,0) 0%, rgba(23,23,23,.28) 100%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

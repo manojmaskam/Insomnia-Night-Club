@@ -11,6 +11,9 @@
   /* ---------- Lenis smooth scrolling ---------- */
   var lenis = null;
   if (!reduceMotion && typeof Lenis !== "undefined") {
+    // native CSS smooth-scroll must be off while Lenis drives the scroll,
+    // otherwise every Lenis frame gets re-smoothed by the browser (lag)
+    document.documentElement.style.scrollBehavior = "auto";
     lenis = new Lenis({ duration: 1.1, smoothWheel: true });
     if (hasGSAP) {
       lenis.on("scroll", function () {
@@ -118,15 +121,31 @@
     window.addEventListener("load", measure);
     measure();
 
+    // layout is viewport-relative — stale loop distance causes visible jumps
+    var resizeTid;
+    window.addEventListener("resize", function () {
+      clearTimeout(resizeTid);
+      resizeTid = setTimeout(measure, 150);
+    });
+
     if (pauseOnHover) {
       track.parentElement.addEventListener("mouseenter", function () { paused = true; });
       track.parentElement.addEventListener("mouseleave", function () { paused = false; });
+    }
+
+    // don't burn frames while the strip is out of the viewport
+    var offscreen = false;
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        offscreen = !entries[0].isIntersecting;
+      }).observe(track.parentElement);
     }
 
     var lastT = performance.now();
     function tick(t) {
       var dt = (t - lastT) / 1000;
       lastT = t;
+      if (offscreen) { requestAnimationFrame(tick); return; }
       if (!paused && !reduceMotion) x -= speed * dt;
       if (half > 0) {
         // wrap into [-half, 0)
@@ -205,14 +224,22 @@
   intro.from(".hero__line", { scaleX: 0, transformOrigin: "center", duration: .8, ease: "power2.inOut" }, "-=.2");
   intro.from(".hero__sub", { opacity: 0, letterSpacing: "1.2em", duration: 1.1 }, "-=.55");
 
-  // slow Ken Burns drift on hero photos
-  gsap.to(".hero__img img", {
+  // slow Ken Burns drift on hero photos — paused whenever the hero is
+  // scrolled out of view so three large layers aren't composited for nothing
+  var kenBurns = gsap.to(".hero__img img", {
     scale: 1.08,
     duration: 14,
     ease: "none",
     yoyo: true,
     repeat: -1,
     stagger: 2
+  });
+  ScrollTrigger.create({
+    trigger: ".hero",
+    start: "top bottom",
+    end: "bottom top",
+    onLeave: function () { kenBurns.pause(); },
+    onEnterBack: function () { kenBurns.resume(); }
   });
 
   // subtle occasional glitch jitter on the hero title
