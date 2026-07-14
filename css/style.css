@@ -457,10 +457,11 @@ ul { list-style: none; }
   position: absolute;
   left: 0; right: 0; bottom: 0;
   height: var(--lh, 19.8rem);
-  /* no backdrop-filter here: blurring under a track that moves every frame
-     forces constant re-rasterization — the design's blurred host card is
-     baked into its image file instead (serv_host_blur.jpg) */
-  background: linear-gradient(180deg, rgba(23,23,23,0) 0%, rgba(23,23,23,.28) 100%);
+  /* no backdrop-filter here: blurring under a strip that moves every frame
+     forces constant GPU re-rasterization (the old scroll-jank source).
+     The design's frosted band is baked into each card image instead
+     (serv_*_b.jpg / serv_host_blur.jpg) — zero runtime cost. */
+  background: transparent;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
