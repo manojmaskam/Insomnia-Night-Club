@@ -1,0 +1,855 @@
+/* ============================================================
+   INSOMNIA — Bar & Night Club
+   Pixel-faithful build of Figma node 248:708 (1920 × 5364)
+   Sizing system: 1rem = 10 design-px, fluid below 1920px.
+   ============================================================ */
+
+:root {
+  --yellow: #f0c91b;
+  --bg: #171717;
+  --ink: #171717;
+  --white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  /* 1rem = 10px at 1920w; scales proportionally below */
+  font-size: calc(min(100vw, 1920px) / 192);
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: "Lato", sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  clip: rect(0 0 0 0); clip-path: inset(50%);
+  overflow: hidden; white-space: nowrap;
+}
+
+/* ---------- shared type ---------- */
+.kicker {
+  font-size: 2rem;
+  line-height: 1.2;
+  color: var(--white);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.lead {
+  font-size: 2rem;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--white);
+}
+
+/* script headings occupy the design's exact 82px line box */
+.script {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 8.2rem;
+}
+.script img { width: auto; }
+
+.sec-head { display: flex; flex-direction: column; align-items: center; }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Lato", sans-serif;
+  font-size: 2rem;
+  line-height: 1.2;
+  transition: background-color .35s ease, color .35s ease, box-shadow .35s ease, transform .35s ease;
+}
+
+.btn--nav {
+  width: 19.8rem;
+  height: 5.6rem;
+  border: 1px solid var(--yellow);
+  color: var(--yellow);
+}
+.btn--nav:hover {
+  background: var(--yellow);
+  color: var(--ink);
+  box-shadow: 0 0 3rem rgba(240, 201, 27, .35);
+}
+
+.btn--solid {
+  width: 29.2rem;
+  height: 5.6rem;
+  background: var(--yellow);
+  border: 1px solid var(--yellow);
+  color: var(--ink);
+  text-transform: uppercase;
+}
+.btn--solid:hover {
+  background: transparent;
+  color: var(--yellow);
+}
+
+.btn--outline {
+  width: 25.5rem;
+  height: 5.6rem;
+  border: 1px solid var(--yellow);
+  color: var(--yellow);
+  text-transform: uppercase;
+}
+.btn--outline:hover {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+/* ============================================================
+   NAV — 1920 × 134
+   ============================================================ */
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  height: 13.4rem;
+  background: rgba(23, 23, 23, .92);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, .04);
+  display: flex;
+  align-items: center;
+}
+
+.nav__logo {
+  position: absolute;
+  left: 23.5rem;
+  top: 2.1rem;
+}
+.nav__logo img { width: 7.46rem; height: 9.2rem; object-fit: contain; }
+
+.nav__links {
+  position: absolute;
+  left: 68.9rem;
+  display: flex;
+  align-items: center;
+  gap: 5.8rem;
+}
+
+.nav__link {
+  position: relative;
+  font-size: 2rem;
+  line-height: 1.2;
+  color: var(--white);
+  transition: color .3s ease;
+  padding-bottom: .4rem;
+}
+.nav__link:hover { color: var(--yellow); }
+
+.nav__underline {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  bottom: -1rem;
+  width: 5.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .1rem;
+  transition: transform .35s ease;
+}
+.nav__dots { width: 5.94rem; height: .4rem; }
+.nav__bar { width: 5.3rem; height: .3rem; background: var(--yellow); }
+
+.nav__link.is-active { color: var(--yellow); font-weight: 700; text-transform: uppercase; }
+.nav__link.is-active .nav__underline,
+.nav__link:hover .nav__underline { transform: translateX(-50%) scaleX(1); }
+
+.nav .btn--nav { position: absolute; right: 20rem; }
+
+/* burger (hidden on desktop) */
+.nav__burger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+}
+.nav__burger span {
+  display: block;
+  width: 26px; height: 2px;
+  background: var(--yellow);
+  transition: transform .3s ease, opacity .3s ease;
+}
+.nav__burger.is-open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.nav__burger.is-open span:nth-child(2) { opacity: 0; }
+.nav__burger.is-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* mobile slide-in menu */
+.mmenu {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(23, 23, 23, .98);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease;
+}
+.mmenu.is-open { opacity: 1; pointer-events: auto; }
+.mmenu__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 34px;
+}
+.mmenu__links a {
+  font-size: 22px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.mmenu__links a:hover { color: var(--yellow); }
+
+/* ============================================================
+   HERO — collage 0→841 below nav
+   ============================================================ */
+.hero {
+  position: relative;
+  margin-top: 13.4rem;
+  height: 84.1rem;
+  overflow: hidden;
+  background: #0b0b0b;
+}
+
+.hero__collage { position: absolute; inset: 0; }
+
+.hero__img {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  overflow: hidden;
+}
+.hero__img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+.hero__img--left  { left: 0;        width: 36.2%; }
+.hero__img--mid   { left: 36.2%;    width: 47.65%; }
+.hero__img--right { left: 83.85%;   width: 16.15%; }
+
+/* left photo: exact Figma node render — design shows the right
+   695px of the 1022px node (left 327px off-canvas) */
+.hero__img--left img {
+  position: absolute;
+  right: 0;
+  width: 147.1%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* glass title panel — 1058×413.6 @ x431.7 y194.2 */
+.hero__glass {
+  position: absolute;
+  left: 22.48%;
+  top: 19.42rem;
+  width: 55.1%;
+  height: 41.36rem;
+  background: rgba(255, 255, 255, .10);
+  border: 1px solid rgba(255, 255, 255, .22);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__title img {
+  width: 80.6rem; /* intrinsic glyph span at the design's 76.8px size */
+  height: auto;
+  margin: 0 auto;
+}
+
+.hero__line {
+  display: block;
+  width: 82.2rem;
+  height: .126rem;
+  background: var(--white);
+  margin: 3.4rem 0 2.6rem;
+}
+
+.hero__sub {
+  font-size: 2.52rem;
+  line-height: 1.2;
+  letter-spacing: .62em;
+  word-spacing: .35em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-right: -.62em; /* optical centering vs letter-spacing */
+  white-space: nowrap;
+}
+
+/* ============================================================
+   UPCOMING PARTIES
+   ============================================================ */
+.parties { padding-top: 5rem; }
+
+.parties .kicker { margin-bottom: 1.5rem; }
+.parties .script img { width: 47.5rem; height: auto; }
+.parties .lead {
+  max-width: 68.3rem;
+  margin: 0 auto;
+  margin-top: .1rem;
+}
+
+.parties__cards {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  margin-top: 4.6rem;
+}
+
+.pcard {
+  position: relative;
+  width: 32.1rem;
+  height: 42.61rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform .45s cubic-bezier(.22,.61,.36,1), box-shadow .45s ease;
+}
+.pcard:hover {
+  transform: translateY(-1.2rem);
+  box-shadow: 0 2.4rem 5rem rgba(0, 0, 0, .55);
+}
+
+.pcard__img { position: absolute; inset: 0; }
+.pcard__img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease;
+}
+.pcard:hover .pcard__img img { transform: scale(1.07); }
+
+.pcard__bar {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 10.6rem;
+  background: var(--yellow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.7rem 0 1.7rem;
+}
+
+.pcard__info h3 {
+  font-size: 2.77rem;
+  font-weight: 900;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.pcard__info p {
+  font-size: 1.54rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-top: .6rem;
+}
+
+.pcard__date {
+  font-family: "Anton", sans-serif;
+  font-size: 3.6rem;
+  line-height: 1.5;
+  color: #000;
+  letter-spacing: .02em;
+}
+
+/* ============================================================
+   MARQUEE — 110px strip
+   ============================================================ */
+.marquee {
+  margin-top: 12.3rem;
+  height: 11rem;
+  background: var(--bg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.marquee__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+}
+.marquee__track img {
+  height: 5.2rem;
+  width: auto;
+  margin-right: 4rem;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   ABOUT — 525 tall block
+   ============================================================ */
+.about { padding: 12.6rem 0 0; }
+.about .kicker { margin-bottom: 2.3rem; }
+.about .script img { width: 40.3rem; height: auto; }
+.about__lead {
+  max-width: 85.3rem;
+  margin: 0 auto;
+  margin-top: .2rem;
+}
+
+/* ============================================================
+   SERVICES
+   ============================================================ */
+.services { padding-top: 15.5rem; }
+.services .kicker { margin-bottom: 0; }
+.services .script img { width: 28.9rem; height: auto; }
+
+.serv {
+  margin-top: 1.5rem;
+  overflow: hidden;
+  cursor: grab;
+}
+.serv:active { cursor: grabbing; }
+
+.serv__track {
+  display: flex;
+  gap: 1.2rem;
+  width: max-content;
+  will-change: transform;
+}
+
+.scard {
+  position: relative;
+  width: var(--w, 45rem);
+  height: 47.6rem;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.scard__img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease;
+}
+.scard:hover .scard__img { transform: scale(1.05); }
+
+.scard__label {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: var(--lh, 19.8rem);
+  background: rgba(23, 23, 23, .06);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 0 2.2rem 3rem;
+}
+.scard__icon { width: 12rem; height: 12rem; object-fit: contain; }
+.scard__label h3 {
+  font-size: 3.6rem;
+  font-weight: 400;
+  line-height: 1.2;
+  max-width: 24rem;
+  margin-top: .4rem;
+}
+
+/* ============================================================
+   GALLERY — 4×250 grid, rows 200, gaps 10/8
+   ============================================================ */
+.gallery { padding-top: 8.2rem; }
+.gallery .kicker { margin-bottom: 1.5rem; }
+.gallery .script img { width: 36.4rem; height: auto; }
+
+.gal {
+  width: 103rem;
+  margin: 3.3rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(4, 25rem);
+  grid-template-rows: repeat(3, 20rem);
+  column-gap: 1rem;
+  row-gap: .8rem;
+}
+
+.gal__item { overflow: hidden; position: relative; }
+.gal__item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease, filter .6s ease;
+}
+.gal__item:hover img { transform: scale(1.08); filter: brightness(1.15); }
+
+.g1 { grid-column: 1; grid-row: 1; }
+.g2 { grid-column: 2; grid-row: 1; }
+.g3 { grid-column: 3; grid-row: 1 / span 2; }
+.g4 { grid-column: 4; grid-row: 1 / span 2; }
+.g5 { grid-column: 1; grid-row: 2 / span 2; }
+.g6 { grid-column: 2; grid-row: 2; }
+.g7 { grid-column: 2 / span 2; grid-row: 3; }
+.g8 { grid-column: 4; grid-row: 3; }
+
+/* ============================================================
+   CTA — 418 tall banner
+   ============================================================ */
+.cta {
+  position: relative;
+  margin-top: 8.2rem;
+  height: 41.8rem;
+  overflow: hidden;
+  background: var(--bg);
+}
+/* exact Figma render already carries the 33% opacity baked in;
+   parallax is a gentle scale so no edges are ever revealed */
+.cta__bg { position: absolute; inset: 0; }
+.cta__bg img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  /* will-change toggled in JS only while this element is in the scroll
+     viewport, instead of promoting it to its own layer for the whole
+     page lifetime */
+}
+
+.cta__content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta__title {
+  font-family: "Anton", sans-serif;
+  font-size: 4.75rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-right: -.3em; /* optical centering vs letter-spacing */
+}
+
+.cta__lead {
+  max-width: 81.8rem;
+  margin-top: 2.6rem;
+}
+
+.cta__btns {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 3.6rem;
+}
+
+/* ============================================================
+   FOOTER — 944 tall
+   ============================================================ */
+.footer {
+  position: relative;
+  height: 94.4rem;
+  overflow: hidden;
+}
+
+.footer__grid { position: relative; height: 45.7rem; }
+
+.footer__logo {
+  position: absolute;
+  left: 21.2rem;
+  top: 13.3rem;
+  width: 18rem;
+  height: 22.2rem;
+  object-fit: contain;
+}
+
+.footer__col { position: absolute; top: 14rem; }
+.footer__col--touch  { left: 49rem;  top: 14rem; }
+.footer__col--hours  { left: 86.3rem; top: 15.3rem; }
+.footer__col--social { left: 133.5rem; top: 15.5rem; }
+
+.footer__col h4 {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.2;
+  text-transform: uppercase;
+  margin-bottom: 3.6rem;
+}
+
+.footer__col ul { display: flex; flex-direction: column; gap: 1.6rem; }
+.footer__col li {
+  display: flex;
+  gap: 1.2rem;
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+.footer__col a { transition: color .3s ease; }
+.footer__col a:hover { color: var(--yellow); }
+
+.ficon { width: 2rem; height: 2rem; object-fit: contain; flex-shrink: 0; }
+
+.hours li { display: flex; gap: 1.5rem; }
+.hours li span:first-child { width: 13rem; }
+
+.footer__note {
+  position: absolute;
+  left: 154.5rem;
+  top: 14.5rem;
+  font-size: 1.6rem;
+  color: #2a2a2a;
+}
+
+.footer__line {
+  border: none;
+  border-top: 1px solid var(--white);
+  width: 135.3rem;
+  margin: 0 auto;
+  margin-top: 0;
+}
+
+.footer__wordmark {
+  margin-top: 16rem;
+  height: 32.7rem;   /* 380 clipped to 327 by footer bottom */
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+.footer__wordmark img {
+  width: 155.7rem;
+  height: auto;
+  /* will-change toggled in JS only while this element is in the scroll
+     viewport, instead of promoting it to its own layer for the whole
+     page lifetime */
+}
+
+/* ============================================================
+   REVEAL DEFAULTS (JS toggles; keep visible without JS)
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET (641px – 1024px)
+   1rem = 10px on a 768px grid
+   ============================================================ */
+@media (max-width: 1024px) {
+  html { font-size: calc(100vw / 76.8); }
+
+  /* --- nav: burger + CTA, hide inline links --- */
+  .nav {
+    height: 8rem;
+    padding: 0 2.4rem;
+    justify-content: space-between;
+  }
+  .nav__logo { position: static; display: flex; align-items: center; }
+  .nav__logo img { width: 4.6rem; height: 5.6rem; }
+  .nav__links { display: none; }
+  .nav .btn--nav {
+    position: static;
+    margin-left: auto;
+    margin-right: 2rem;
+    width: 17rem;
+    height: 4.6rem;
+    font-size: 1.7rem;
+  }
+  .nav__burger { display: flex; }
+
+  /* --- hero --- */
+  .hero { margin-top: 8rem; height: 62rem; }
+  .hero__glass {
+    left: 8%;
+    width: 84%;
+    top: 50%;
+    transform: translateY(-50%);
+    height: auto;
+    padding: 5rem 2.4rem;
+  }
+  .hero__title img { width: min(64rem, 86%); }
+  .hero__line { width: min(66rem, 88%); margin: 3rem 0 2.2rem; }
+  .hero__sub { font-size: 2rem; letter-spacing: .5em; margin-right: -.5em; }
+
+  /* --- type --- */
+  .kicker { font-size: 1.8rem; }
+  .lead { font-size: 1.8rem; line-height: 1.45; padding: 0 3.2rem; }
+
+  /* --- parties: 2 × 2 grid --- */
+  .parties { padding-top: 7.2rem; }
+  .parties__cards {
+    flex-wrap: wrap;
+    gap: 3.2rem;
+    margin-top: 5.4rem;
+    padding: 0 3.2rem;
+  }
+  .pcard { width: 32.1rem; height: 42.6rem; }
+
+  /* --- marquee --- */
+  .marquee { margin-top: 8rem; height: 9.6rem; }
+  .marquee__track img { height: 4.4rem; margin-right: 3.2rem; }
+
+  /* --- about --- */
+  .about { padding-top: 8rem; }
+  .about__lead { max-width: 64rem; }
+
+  /* --- services --- */
+  .services { padding-top: 8rem; }
+  .scard { height: 42rem; }
+  .scard[style] { --w: 38rem !important; }
+  .scard--wide[style] { --w: 62rem !important; }
+  .scard__icon { width: 10rem; height: 10rem; }
+  .scard__label h3 { font-size: 3rem; }
+  .scard__label { padding: 0 0 2rem 2.4rem; height: min(var(--lh, 19.8rem), 60%); }
+  .scard--blurall .scard__label { height: 100%; }
+
+  /* --- gallery: same mosaic, fluid width --- */
+  .gallery { padding-top: 7.2rem; }
+  .gal {
+    width: calc(100% - 6.4rem);
+    max-width: 72rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 15rem);
+    column-gap: .8rem;
+    row-gap: .8rem;
+  }
+
+  /* --- cta --- */
+  .cta { margin-top: 7.2rem; height: auto; padding: 7.2rem 3.2rem; }
+  .cta__title { font-size: 3.6rem; letter-spacing: .22em; margin-right: -.22em; }
+  .cta__lead { max-width: 60rem; }
+  .cta__btns { margin-top: 3.2rem; }
+
+  /* --- footer: 3-column flow grid --- */
+  .footer { height: auto; }
+  .footer__grid {
+    height: auto;
+    display: grid;
+    grid-template-columns: auto 1fr 1fr 1fr;
+    align-items: start;
+    gap: 4rem;
+    padding: 6.4rem 3.2rem 0;
+  }
+  .footer__logo { position: static; width: 12rem; height: 14.8rem; }
+  .footer__col { position: static; }
+  .footer__col h4 { margin-bottom: 2.4rem; }
+  .footer__note {
+    position: static;
+    grid-column: 2 / -1;
+    margin-top: -2.4rem;
+    color: #4a4a4a;
+  }
+  .footer__line { width: calc(100% - 6.4rem); margin-top: 4.8rem; }
+  .footer__wordmark { margin-top: 7rem; height: 17vw; }
+  .footer__wordmark img { width: 90%; }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE (≤ 640px)
+   1rem = 10px on a 430px grid
+   ============================================================ */
+@media (max-width: 640px) {
+  html { font-size: calc(100vw / 43); }
+
+  /* --- nav --- */
+  .nav { height: 7.2rem; padding: 0 2rem; }
+  .nav__logo img { width: 4rem; height: 5rem; }
+  .nav .btn--nav { display: none; }
+
+  /* --- hero --- */
+  .hero { margin-top: 7.2rem; height: 52rem; }
+  .hero__img--left  { left: 0;   width: 30%; }
+  .hero__img--mid   { left: 30%; width: 55%; }
+  .hero__img--right { left: 85%; width: 15%; }
+  .hero__glass { left: 5%; width: 90%; padding: 4rem 2rem; }
+  .hero__title img { width: 86%; }
+  .hero__line { width: 86%; margin: 2.4rem 0 1.8rem; }
+  .hero__sub { font-size: 1.3rem; letter-spacing: .3em; margin-right: -.3em; white-space: normal; padding: 0 1rem; }
+
+  /* --- type --- */
+  .kicker { font-size: 1.6rem; }
+  .lead { font-size: 1.6rem; padding: 0 2.4rem; }
+  .script { height: 7rem; }
+  .parties .script img { width: min(34rem, 84vw); }
+  .about .script img,
+  .services .script img,
+  .gallery .script img { max-width: 84vw; }
+
+  /* --- parties: single column --- */
+  .parties { padding-top: 6.4rem; }
+  .parties__cards { gap: 2.4rem; margin-top: 4.8rem; padding: 0 2.4rem; }
+  .pcard { width: min(32.1rem, 100%); }
+
+  /* --- marquee --- */
+  .marquee { margin-top: 6.4rem; height: 8rem; }
+  .marquee__track img { height: 3.6rem; margin-right: 2.4rem; }
+
+  /* --- about --- */
+  .about { padding-top: 6.4rem; }
+
+  /* --- services --- */
+  .services { padding-top: 6.4rem; }
+  .scard { height: 36rem; }
+  .scard[style] { --w: 30rem !important; }
+  .scard--wide[style] { --w: 42rem !important; }
+  .scard__icon { width: 8rem; height: 8rem; }
+  .scard__label h3 { font-size: 2.4rem; }
+  .scard__label { padding: 0 0 1.8rem 2rem; }
+
+  /* --- gallery: 2-column remix --- */
+  .gallery { padding-top: 6.4rem; }
+  .gal {
+    width: calc(100% - 4.8rem);
+    max-width: none;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 14rem);
+    gap: .8rem;
+  }
+  .g1 { grid-column: 1; grid-row: 1; }
+  .g2 { grid-column: 2; grid-row: 1; }
+  .g3 { grid-column: 1; grid-row: 2 / span 2; }
+  .g4 { grid-column: 2; grid-row: 2 / span 2; }
+  .g5 { grid-column: 1; grid-row: 4 / span 2; }
+  .g6 { grid-column: 2; grid-row: 4; }
+  .g7 { grid-column: 2; grid-row: 5; }
+  .g8 { grid-column: 1 / span 2; grid-row: 6; }
+
+  /* --- cta --- */
+  .cta { margin-top: 6.4rem; padding: 6.4rem 2.4rem; }
+  .cta__title { font-size: 2.6rem; letter-spacing: .14em; margin-right: -.14em; }
+  .cta__btns { flex-direction: column; gap: 1.6rem; margin-top: 3rem; width: 100%; align-items: center; }
+  .btn--solid, .btn--outline { width: min(29.2rem, 100%); }
+
+  /* --- footer: single column --- */
+  .footer__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    padding: 6.4rem 2.4rem 0;
+  }
+  .footer__logo { width: 9rem; height: 11rem; }
+  .footer__col h4 { margin-bottom: 2rem; }
+  .footer__note { margin-top: -2.4rem; }
+  .footer__line { width: calc(100% - 4.8rem); margin-top: 4rem; }
+  .footer__wordmark { margin-top: 6rem; height: 18vw; }
+  .footer__wordmark img { width: 92%; }
+}
