@@ -1,0 +1,17 @@
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Deploy artifacts
+*.zip
+insomnia-deploy.zip
+
+# Logs / temp
+*.log
+*.tmp
