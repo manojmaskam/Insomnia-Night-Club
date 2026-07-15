@@ -14,8 +14,12 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
-  /* 1rem = 10px at 1920w; scales proportionally below */
-  font-size: calc(min(100vw, 1920px) / 192);
+  /* 1rem = 10px at 1920w, and scales PROPORTIONALLY at every width (no upper
+     cap). The layout is an absolutely-positioned 1920px design, so a cap would
+     freeze every offset in place above 1920 and shove the nav/footer content to
+     one side. Pure vw scaling keeps the whole page centred and balanced at any
+     width — it just grows or shrinks like a zoom. */
+  font-size: calc(100vw / 192);
   /* no CSS smooth-scroll: it fights Lenis (double-smoothing = lag);
      JS falls back to scrollIntoView({behavior:'smooth'}) when Lenis is absent */
 }
@@ -174,7 +178,29 @@ ul { list-style: none; }
 .nav__link.is-active .nav__underline,
 .nav__link:hover .nav__underline { transform: translateX(-50%) scaleX(1); }
 
-.nav .btn--nav { position: absolute; right: 20rem; }
+/* nav CTA group (two buttons side by side) */
+.nav__cta {
+  position: absolute;
+  right: 6rem;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+.nav__cta .btn--nav {
+  width: auto;
+  padding: 0 2rem;
+  white-space: nowrap;
+}
+
+/* filled (solid yellow) button variant */
+.btn--filled {
+  background: var(--yellow);
+  color: var(--ink);
+}
+.btn--filled:hover {
+  background: transparent;
+  color: var(--yellow);
+}
 
 /* burger (hidden on desktop) */
 .nav__burger {
@@ -320,9 +346,31 @@ ul { list-style: none; }
 
 .parties__cards {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 5rem;
+  row-gap: 4rem;
   margin-top: 4.6rem;
+  /* 4 cards + 3 gaps = 4*32.1 + 3*5 = 143.4rem; +2rem slack so rounding
+     never bumps the 4th card to a new row. Caps row 1 at 4, wraps the rest. */
+  max-width: 145.4rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* dedicated Events page — .parties.evpage (2 classes) beats the base
+   .parties padding-top inside the responsive media queries */
+.parties.evpage { padding-top: 22rem; padding-bottom: 10rem; }
+.evpage__cta {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-top: 6rem;
+}
+@media (max-width: 1024px) { .parties.evpage { padding-top: 18rem; } }
+@media (max-width: 640px) {
+  .parties.evpage { padding-top: 13rem; padding-bottom: 6rem; }
+  .evpage__cta { flex-direction: column; align-items: center; gap: 1.6rem; }
 }
 
 .pcard {
@@ -331,10 +379,12 @@ ul { list-style: none; }
   height: 42.61rem;
   overflow: hidden;
   cursor: pointer;
-  transition: transform .45s cubic-bezier(.22,.61,.36,1), box-shadow .45s ease;
+  /* hover lift uses the `translate` property (not `transform`) so it never
+     collides with GSAP's per-frame transform writes during the entrance reveal */
+  transition: translate .45s cubic-bezier(.22,.61,.36,1), box-shadow .45s ease;
 }
 .pcard:hover {
-  transform: translateY(-1.2rem);
+  translate: 0 -1.2rem;
   box-shadow: 0 2.4rem 5rem rgba(0, 0, 0, .55);
 }
 
@@ -511,6 +561,100 @@ ul { list-style: none; }
 .g8 { grid-column: 4; grid-row: 3; }
 
 /* ============================================================
+   FIND US / MAP
+   ============================================================ */
+.findus { padding-top: 12rem; }
+.findus .kicker { margin-bottom: .6rem; }
+.findus__title {
+  font-family: "Anton", sans-serif;
+  font-size: 5.6rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 4.4rem;
+}
+/* two-column: building photo (left) + map with Get Directions button (right) */
+.findus__grid {
+  width: 90rem;
+  max-width: calc(100% - 8rem);
+  margin: 0 auto;
+  display: flex;
+  gap: 1.8rem;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+.findus__photo {
+  flex: 0 0 34%;
+  min-width: 18rem;
+  border-radius: 1.4rem;
+  overflow: hidden;
+  min-height: 24rem;
+  border: 1px solid rgba(240, 201, 27, .35);
+}
+.findus__photo img {
+  width: 100%;
+  height: 100%;
+  min-height: 24rem;
+  object-fit: cover;
+  display: block;
+}
+.findus__side {
+  flex: 1 1 58%;
+  min-width: 22rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1.4rem;
+  overflow: hidden;
+  min-height: 24rem;
+  border: 1px solid rgba(240, 201, 27, .35);
+  box-shadow: 0 1.6rem 4.4rem rgba(0, 0, 0, .45);
+}
+.findus__map { flex: 1; min-height: 0; }
+.findus__map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 19rem;
+  border: 0;
+  display: block;
+}
+.findus__dir {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: var(--yellow);
+  color: var(--ink);
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  font-size: 1.8rem;
+  padding: 2rem 2.2rem;
+  text-decoration: none;
+  transition: background .25s ease, color .25s ease;
+}
+.findus__dir:hover { background: #fff; color: var(--ink); }
+.findus__dir svg { width: 2rem; height: 2rem; flex-shrink: 0; }
+
+@media (max-width: 1024px) {
+  .findus { padding-top: 8rem; }
+  .findus__title { font-size: 4.2rem; margin-bottom: 3.2rem; }
+  .findus__grid { max-width: calc(100% - 6.4rem); }
+}
+@media (max-width: 767px) {
+  .findus { padding-top: 6.4rem; }
+  .findus__title { font-size: 3rem; }
+  .findus__grid { max-width: calc(100% - 4.8rem); flex-direction: column; gap: 1.6rem; }
+  /* map first, small building photo strip below */
+  .findus__side { order: 1; min-height: 32rem; }
+  .findus__photo { order: 2; height: 8rem; min-height: 8rem; }
+  .findus__photo img { height: 100%; min-height: 0; object-position: center 35%; }
+  .findus__map iframe { min-height: 22rem; }
+}
+
+/* ============================================================
    CTA — 418 tall banner
    ============================================================ */
 .cta {
@@ -669,15 +813,9 @@ ul { list-style: none; }
   .nav__logo { position: static; display: flex; align-items: center; }
   .nav__logo img { width: 4.6rem; height: 5.6rem; }
   .nav__links { display: none; }
-  .nav .btn--nav {
-    position: static;
-    margin-left: auto;
-    margin-right: 2rem;
-    width: 17rem;
-    height: 4.6rem;
-    font-size: 1.7rem;
-  }
-  .nav__burger { display: flex; }
+  /* both CTAs collapse into the burger menu on tablet & below */
+  .nav__cta { display: none; }
+  .nav__burger { display: flex; margin-left: auto; }
 
   /* --- hero --- */
   .hero { margin-top: 8rem; height: 62rem; }
@@ -776,7 +914,7 @@ ul { list-style: none; }
   /* --- nav --- */
   .nav { height: 7.2rem; padding: 0 2rem; }
   .nav__logo img { width: 4rem; height: 5rem; }
-  .nav .btn--nav { display: none; }
+  .nav__cta { display: none; }
 
   /* --- hero --- */
   .hero { margin-top: 7.2rem; height: 52rem; }
@@ -797,10 +935,23 @@ ul { list-style: none; }
   .services .script img,
   .gallery .script img { max-width: 84vw; }
 
-  /* --- parties: single column --- */
+  /* --- parties: 2 cards per row on mobile --- */
   .parties { padding-top: 6.4rem; }
-  .parties__cards { gap: 2.4rem; margin-top: 4.8rem; padding: 0 2.4rem; }
-  .pcard { width: min(32.1rem, 100%); }
+  .parties__cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    row-gap: 1.6rem;
+    margin-top: 4rem;
+    padding: 0 1.6rem;
+    max-width: none;
+  }
+  .pcard { width: auto; min-width: 0; height: 28rem; }
+  .pcard__bar { height: 7rem; padding: 0 .9rem; gap: .4rem; }
+  .pcard__info { min-width: 0; }
+  .pcard__info h3 { font-size: 1.55rem; white-space: nowrap; }
+  .pcard__info p { font-size: 1.05rem; margin-top: .2rem; white-space: nowrap; }
+  .pcard__date { font-size: 1.7rem; line-height: 1.1; white-space: nowrap; }
 
   /* --- marquee --- */
   .marquee { margin-top: 6.4rem; height: 8rem; }

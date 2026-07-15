@@ -14,7 +14,7 @@
     // native CSS smooth-scroll must be off while Lenis drives the scroll,
     // otherwise every Lenis frame gets re-smoothed by the browser (lag)
     document.documentElement.style.scrollBehavior = "auto";
-    lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+    lenis = new Lenis({ duration: 0.8, wheelMultiplier: 1.5, smoothWheel: true });
     if (hasGSAP) {
       lenis.on("scroll", function () {
         if (typeof ScrollTrigger !== "undefined") ScrollTrigger.update();
@@ -160,11 +160,12 @@
   }
 
   // glitch-text strip
-  makeMarquee(document.querySelector("[data-marquee]"), 80, false);
+  makeMarquee(document.querySelector("[data-marquee]"), 150, false);
 
   // services carousel — slower, draggable, pause on hover
   var servTrack = document.querySelector("[data-serv-track]");
-  var serv = makeMarquee(servTrack, 45, true);
+  // fast drift; still pauses on hover & supports drag
+  var serv = makeMarquee(servTrack, 100, true);
 
   // drag support for the services strip
   (function enableDrag() {
@@ -273,22 +274,17 @@
   });
 
   // party cards stagger in
+  // whole card (image + yellow bar together) fades/rises in — one tween per
+  // card so the bar can never desync from its card the way a separate
+  // per-bar tween did
   gsap.from("[data-card]", {
     opacity: 0,
     y: 70,
     duration: .85,
     stagger: .12,
     ease: "power3.out",
+    clearProps: "transform,opacity",
     scrollTrigger: { trigger: ".parties__cards", start: "top 85%" }
-  });
-
-  // yellow bars slide up after cards land
-  gsap.from(".pcard__bar", {
-    yPercent: 100,
-    duration: .7,
-    stagger: .12,
-    ease: "power3.out",
-    scrollTrigger: { trigger: ".parties__cards", start: "top 80%" }
   });
 
   // gallery tiles pop in

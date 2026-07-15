@@ -3,8 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Insomnia — Bar &amp; Night Club | Where The Night Never Sleeps</title>
-  <meta name="description" content="Insomnia Night Club — the definitive crown jewel of Hyderabad's after-hours culture. Sound. Light. Energy." />
+
+  <!-- Primary SEO -->
+  <title>Insomnia Night Club — Best Pub &amp; Nightclub in Hyderabad | Khajaguda</title>
+  <meta name="description" content="Insomnia Night Club in Khajaguda, Hyderabad — one of the best pubs &amp; nightclubs in the city. Live DJs, signature cocktails, VIP tables &amp; non-stop late-night energy. Open daily 12 PM–12 AM. Book a VIP table." />
+  <meta name="keywords" content="best pub in Hyderabad, best nightclub in Hyderabad, nightclub in Khajaguda, pub in Gachibowli, bar near Financial District Hyderabad, Insomnia Night Club, live DJ nights Hyderabad, VIP table booking Hyderabad, cocktail bar Hyderabad, party place in Hyderabad, late night club Hyderabad" />
+  <meta name="author" content="Insomnia Night Club" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="theme-color" content="#171717" />
+  <link rel="canonical" href="https://insomnianightclub.net/" />
+
+  <!-- Geo -->
+  <meta name="geo.region" content="IN-TG" />
+  <meta name="geo.placename" content="Khajaguda, Hyderabad" />
+  <meta name="geo.position" content="17.41804298;78.36539817" />
+  <meta name="ICBM" content="17.41804298, 78.36539817" />
+
+  <!-- Open Graph (social share preview — purple building image) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Insomnia Night Club" />
+  <meta property="og:title" content="Insomnia Night Club — Best Pub &amp; Nightclub in Hyderabad" />
+  <meta property="og:description" content="Live DJs, signature cocktails, VIP tables &amp; non-stop late-night energy in Khajaguda, Hyderabad. Open daily 12 PM–12 AM." />
+  <meta property="og:url" content="https://insomnianightclub.net/" />
+  <meta property="og:image" content="https://insomnianightclub.net/assets/images/venue_building.jpg" />
+  <meta property="og:image:secure_url" content="https://insomnianightclub.net/assets/images/venue_building.jpg" />
+  <meta property="og:image:alt" content="Insomnia Night Club building in Khajaguda, Hyderabad" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="920" />
+  <meta property="og:image:height" content="1739" />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Insomnia Night Club — Best Pub &amp; Nightclub in Hyderabad" />
+  <meta name="twitter:description" content="Live DJs, signature cocktails, VIP tables &amp; late-night energy in Khajaguda, Hyderabad." />
+  <meta name="twitter:image" content="https://insomnianightclub.net/assets/images/venue_building.jpg" />
+  <meta name="twitter:image:alt" content="Insomnia Night Club building in Khajaguda, Hyderabad" />
+
   <link rel="icon" type="image/png" href="assets/images/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,17 +51,11 @@
   <!-- ============ NAV ============ -->
   <header class="nav" id="home">
     <a class="nav__logo" href="#home" aria-label="Insomnia Night Club — home">
-      <img src="assets/images/nav_logo_exact.png" alt="Insomnia Night Club logo" loading="eager" decoding="async" />
+      <img src="assets/images/nav_logo_exact.png" alt="Insomnia Night Club logo — best pub &amp; nightclub in Hyderabad" title="Insomnia Night Club, Khajaguda Hyderabad" loading="eager" decoding="async" />
     </a>
 
     <nav class="nav__links" aria-label="Primary">
       <a href="#home" class="nav__link is-active" data-nav>Home
-        <span class="nav__underline" aria-hidden="true">
-          <img src="assets/svg/dots_grid.svg" alt="" class="nav__dots" />
-          <span class="nav__bar"></span>
-        </span>
-      </a>
-      <a href="#about" class="nav__link" data-nav>About
         <span class="nav__underline" aria-hidden="true">
           <img src="assets/svg/dots_grid.svg" alt="" class="nav__dots" />
           <span class="nav__bar"></span>
@@ -38,6 +67,13 @@
           <span class="nav__bar"></span>
         </span>
       </a>
+      <a href="#about" class="nav__link" data-nav>About
+        <span class="nav__underline" aria-hidden="true">
+          <img src="assets/svg/dots_grid.svg" alt="" class="nav__dots" />
+          <span class="nav__bar"></span>
+        </span>
+      </a>
+      
       <a href="#gallery" class="nav__link" data-nav>Gallery
         <span class="nav__underline" aria-hidden="true">
           <img src="assets/svg/dots_grid.svg" alt="" class="nav__dots" />
@@ -52,7 +88,10 @@
       </a>
     </nav>
 
-    <a href="#contact" class="btn btn--nav">Book A VIP Table</a>
+    <div class="nav__cta">
+      <a href="events.html" class="btn btn--nav btn--filled">Upcoming Events</a>
+      <a href="https://www.district.in/dining/hyderabad/insomnia-nanakramguda/book" class="btn btn--nav" target="_blank" rel="noopener">Book A VIP Table</a>
+    </div>
 
     <button class="nav__burger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -63,26 +102,27 @@
   <div class="mmenu" aria-hidden="true">
     <nav class="mmenu__links" aria-label="Mobile">
       <a href="#home" data-nav>Home</a>
-      <a href="#about" data-nav>About</a>
       <a href="#events" data-nav>Events</a>
+      <a href="#about" data-nav>About</a>
       <a href="#gallery" data-nav>Gallery</a>
       <a href="#contact" data-nav>Contact</a>
-      <a href="#contact" class="btn btn--nav">Book A VIP Table</a>
+      <a href="events.html" class="btn btn--nav btn--filled">Upcoming Events</a>
+      <a href="https://www.district.in/dining/hyderabad/insomnia-nanakramguda/book" class="btn btn--nav" target="_blank" rel="noopener">Book A VIP Table</a>
     </nav>
   </div>
 
   <!-- ============ HERO ============ -->
   <section class="hero">
     <div class="hero__collage" aria-hidden="true">
-      <div class="hero__img hero__img--left"><img src="assets/images/hero_left.jpg" alt="" loading="eager" decoding="async" fetchpriority="high" /></div>
-      <div class="hero__img hero__img--mid"><img src="assets/images/hero_mid.jpg" alt="" loading="eager" decoding="async" /></div>
-      <div class="hero__img hero__img--right"><img src="assets/images/hero_right.jpg" alt="" loading="eager" decoding="async" /></div>
+      <div class="hero__img hero__img--left"><img src="assets/images/hero_left.jpg" alt="Insomnia Night Club neon sign in Khajaguda, Hyderabad" title="Insomnia Night Club, Khajaguda Hyderabad" loading="eager" decoding="async" fetchpriority="high" /></div>
+      <div class="hero__img hero__img--mid"><img src="assets/images/hero_mid.jpg" alt="Nightclub laser lights and party crowd at Insomnia, Hyderabad" title="Best nightclub in Hyderabad — Insomnia" loading="eager" decoding="async" /></div>
+      <div class="hero__img hero__img--right"><img src="assets/images/hero_right.jpg" alt="Live DJ night and dancing crowd at Insomnia Night Club Hyderabad" title="Live DJ nights at Insomnia, Hyderabad" loading="eager" decoding="async" /></div>
     </div>
 
     <div class="hero__glass">
       <h1 class="hero__title">
-        <span class="visually-hidden">Night Club</span>
-        <img src="assets/svg/title_night_club.svg" alt="" aria-hidden="true" />
+        <span class="visually-hidden">Insomnia Night Club — Best Pub &amp; Nightclub in Hyderabad, Khajaguda</span>
+        <img src="assets/svg/title_night_club.svg" alt="Insomnia — Night Club, Hyderabad" title="Insomnia Night Club, Khajaguda Hyderabad" aria-hidden="true" />
       </h1>
       <span class="hero__line" aria-hidden="true"></span>
       <p class="hero__sub">Where&nbsp;the&nbsp;night&nbsp;never&nbsp;sleeps.</p>
@@ -100,48 +140,8 @@
       <p class="lead" data-reveal>Experience Hyderabad&rsquo;s ultimate nightlife with our weekly lineup of live DJs, themed events, and non-stop dance floor energy.</p>
     </div>
 
-    <div class="parties__cards">
-      <article class="pcard" data-card>
-        <div class="pcard__img"><img src="assets/images/dj_card.jpg" alt="DJ Leena performing live" loading="lazy" decoding="async" /></div>
-        <div class="pcard__bar">
-          <div class="pcard__info">
-            <h3>DJ&nbsp; Leena</h3>
-            <p>8 PM&nbsp; | &nbsp;Friday</p>
-          </div>
-          <p class="pcard__date">26 JUN</p>
-        </div>
-      </article>
-      <article class="pcard" data-card>
-        <div class="pcard__img"><img src="assets/images/dj_card.jpg" alt="DJ Leena performing live" loading="lazy" decoding="async" /></div>
-        <div class="pcard__bar">
-          <div class="pcard__info">
-            <h3>DJ&nbsp; Leena</h3>
-            <p>8 PM&nbsp; | &nbsp;Friday</p>
-          </div>
-          <p class="pcard__date">26 JUN</p>
-        </div>
-      </article>
-      <article class="pcard" data-card>
-        <div class="pcard__img"><img src="assets/images/dj_card.jpg" alt="DJ Leena performing live" loading="lazy" decoding="async" /></div>
-        <div class="pcard__bar">
-          <div class="pcard__info">
-            <h3>DJ&nbsp; Leena</h3>
-            <p>8 PM&nbsp; | &nbsp;Friday</p>
-          </div>
-          <p class="pcard__date">26 JUN</p>
-        </div>
-      </article>
-      <article class="pcard" data-card>
-        <div class="pcard__img"><img src="assets/images/dj_card.jpg" alt="DJ Leena performing live" loading="lazy" decoding="async" /></div>
-        <div class="pcard__bar">
-          <div class="pcard__info">
-            <h3>DJ&nbsp; Leena</h3>
-            <p>8 PM&nbsp; | &nbsp;Friday</p>
-          </div>
-          <p class="pcard__date">26 JUN</p>
-        </div>
-      </article>
-    </div>
+    <!-- Cards are rendered from data/events.json — edit that file to add/remove events (name, date, time, image). -->
+    <div class="parties__cards" data-events-grid data-events-upcoming="1"></div>
   </section>
 
   <!-- ============ MARQUEE ============ -->
@@ -180,35 +180,35 @@
       <div class="serv__track" data-serv-track>
         <!-- set 1 -->
         <article class="scard" style="--w:45rem">
-          <img class="scard__img" src="assets/images/serv_bar_b.jpg" alt="Bartender pouring a cocktail at the bar" loading="lazy" decoding="async" />
+          <img class="scard__img" src="assets/images/serv_bar_b.jpg" alt="Full cocktail bar at Insomnia Night Club, Hyderabad" title="Cocktail bar — Insomnia, Hyderabad" loading="lazy" decoding="async" />
           <div class="scard__label" style="--lh:22.8rem">
             <img class="scard__icon" src="assets/svg/icon_bar.svg" alt="" aria-hidden="true" />
             <h3>Bar</h3>
           </div>
         </article>
-        <article class="scard scard--blurall" style="--w:45rem">
-          <img class="scard__img" src="assets/images/serv_host_blur.jpg" alt="Dedicated host serving guests" loading="lazy" decoding="async" />
-          <div class="scard__label" style="--lh:100%">
+        <article class="scard" style="--w:45rem">
+          <img class="scard__img" src="assets/images/serv_host_b.jpg" alt="Dedicated host and table service at Insomnia Night Club, Hyderabad" title="Dedicated host — Insomnia, Hyderabad" loading="lazy" decoding="async" />
+          <div class="scard__label" style="--lh:19.8rem">
             <img class="scard__icon" src="assets/svg/icon_host.svg" alt="" aria-hidden="true" />
             <h3>Dedicated Host</h3>
           </div>
         </article>
         <article class="scard" style="--w:45rem">
-          <img class="scard__img" src="assets/images/serv_dj_b.jpg" alt="DJ mixing on turntables" loading="lazy" decoding="async" />
+          <img class="scard__img" src="assets/images/serv_dj_b.jpg" alt="DJ mixing live on turntables at Insomnia Night Club, Hyderabad" title="Live DJ nights — Insomnia, Hyderabad" loading="lazy" decoding="async" />
           <div class="scard__label" style="--lh:19.8rem">
             <img class="scard__icon" src="assets/svg/icon_dj.svg" alt="" aria-hidden="true" />
             <h3>DJ&nbsp; Night Club</h3>
           </div>
         </article>
         <article class="scard" style="--w:45rem">
-          <img class="scard__img" src="assets/images/serv_dance_b.jpg" alt="Dance floor with laser lights" loading="lazy" decoding="async" />
+          <img class="scard__img" src="assets/images/serv_dance_b.jpg" alt="Dance floor with laser lights at Insomnia Night Club, Hyderabad" title="Dance floor — Insomnia, Hyderabad" loading="lazy" decoding="async" />
           <div class="scard__label" style="--lh:22.1rem">
             <img class="scard__icon" src="assets/svg/icon_dancefloor.svg" alt="" aria-hidden="true" />
             <h3>Dance Floor</h3>
           </div>
         </article>
         <article class="scard scard--wide" style="--w:104.6rem">
-          <img class="scard__img" src="assets/images/vip_wide_b.jpg" alt="VIP section overlooking the club" loading="lazy" decoding="async" />
+          <img class="scard__img" src="assets/images/vip_wide_b.jpg" alt="VIP section and bottle service at Insomnia Night Club, Hyderabad" title="VIP tables — Insomnia, Hyderabad" loading="lazy" decoding="async" />
           <div class="scard__label" style="--lh:19.8rem">
             <img class="scard__icon" src="assets/svg/icon_vip.svg" alt="" aria-hidden="true" />
             <h3>VIP Section</h3>
@@ -229,14 +229,14 @@
     </div>
 
     <div class="gal">
-      <figure class="gal__item g1" data-gal><img src="assets/images/gal_39703.jpg" alt="DJ adjusting the mixer" loading="lazy" decoding="async" /></figure>
-      <figure class="gal__item g2" data-gal><img src="assets/images/gal_39704.jpg" alt="DJ under red light" loading="lazy" decoding="async" /></figure>
-      <figure class="gal__item g3" data-gal><img src="assets/images/gal_39707.jpg" alt="Turntable close-up in blue light" loading="lazy" decoding="async" /></figure>
-      <figure class="gal__item g4" data-gal><img src="assets/images/gal_39709.jpg" alt="Pioneer DJ controller in red light" loading="lazy" decoding="async" /></figure>
-      <figure class="gal__item g5" data-gal><img src="assets/images/gal_39702.jpg" alt="Hand on DJ mixer in purple light" loading="lazy" decoding="async" /></figure>
-      <figure class="gal__item g6" data-gal><img src="assets/images/gal_39705.jpg" alt="Bottle service sparkling in blue" loading="lazy" decoding="async" /></figure>
-      <figure class="gal__item g7" data-gal><img src="assets/images/gal_wide.jpg" alt="Club crowd dancing" loading="lazy" decoding="async" /></figure>
-      <figure class="gal__item g8" data-gal><img src="assets/images/gal_39708.jpg" alt="Neon laser show" loading="lazy" decoding="async" /></figure>
+      <figure class="gal__item g1" data-gal><img src="assets/images/gal_39703.jpg" alt="DJ adjusting the mixer — Insomnia Night Club, Hyderabad" loading="lazy" decoding="async" /></figure>
+      <figure class="gal__item g2" data-gal><img src="assets/images/gal_39704.jpg" alt="DJ under red light — Insomnia Night Club, Hyderabad" loading="lazy" decoding="async" /></figure>
+      <figure class="gal__item g3" data-gal><img src="assets/images/gal_39707.jpg" alt="Turntable close-up in blue light — Insomnia Night Club, Hyderabad" loading="lazy" decoding="async" /></figure>
+      <figure class="gal__item g4" data-gal><img src="assets/images/gal_39709.jpg" alt="Pioneer DJ controller in red light — Insomnia Night Club, Hyderabad" loading="lazy" decoding="async" /></figure>
+      <figure class="gal__item g5" data-gal><img src="assets/images/gal_39702.jpg" alt="Hand on DJ mixer in purple light — Insomnia Night Club, Hyderabad" loading="lazy" decoding="async" /></figure>
+      <figure class="gal__item g6" data-gal><img src="assets/images/gal_39705.jpg" alt="Bottle service sparkling in blue — Insomnia Night Club, Hyderabad" loading="lazy" decoding="async" /></figure>
+      <figure class="gal__item g7" data-gal><img src="assets/images/gal_wide.jpg" alt="Club crowd dancing — Insomnia Night Club, Hyderabad" loading="lazy" decoding="async" /></figure>
+      <figure class="gal__item g8" data-gal><img src="assets/images/gal_39708.jpg" alt="Neon laser show — Insomnia Night Club, Hyderabad" loading="lazy" decoding="async" /></figure>
     </div>
   </section>
 
@@ -248,7 +248,33 @@
       <p class="lead cta__lead" data-reveal>Step into the ultimate vibe. Sip signature cocktails and fuel your night with premium late-night bites while the city's best DJs bring the energy.</p>
       <div class="cta__btns" data-reveal>
         <a href="#contact" class="btn btn--solid">Explore Food &amp; Drinks</a>
-        <a href="#contact" class="btn btn--outline">Reserve Your Table</a>
+        <a href="https://www.district.in/dining/hyderabad/insomnia-nanakramguda/book" class="btn btn--outline" target="_blank" rel="noopener">Reserve Your Table</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FIND US / MAP ============ -->
+  <section class="findus">
+    <div class="sec-head" data-reveal-group>
+      <p class="kicker" data-reveal>Visit Us</p>
+      <h2 class="findus__title" data-reveal>Find Us</h2>
+    </div>
+
+    <div class="findus__grid" data-reveal>
+      <div class="findus__photo">
+        <img src="assets/images/venue_building.jpg" alt="Insomnia Night Club building — best pub &amp; nightclub in Khajaguda, Hyderabad" title="Insomnia Night Club, Khajaguda – Nanakramguda Rd, Hyderabad" loading="lazy" decoding="async" />
+      </div>
+      <div class="findus__side">
+        <div class="findus__map">
+          <iframe
+            title="Insomnia Night Club location on Google Maps"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d295.2430630701497!2d78.36539817377061!3d17.41804298181844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb95002b75bbfb%3A0x494ed28b56f13075!2sInsomnia%20Night%20Club!5e1!3m2!1sen!2sin!4v1784093912834!5m2!1sen!2sin"
+            allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <a class="findus__dir" href="https://www.google.com/maps/dir/?api=1&amp;destination=Insomnia%20Night%20Club%2C%20Khajaguda%2C%20Hyderabad" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M21.71 11.29l-9-9a1 1 0 0 0-1.42 0l-9 9a1 1 0 0 0 0 1.42l9 9a1 1 0 0 0 1.42 0l9-9a1 1 0 0 0 0-1.42zM14 14.5V12h-4v3H8v-4a1 1 0 0 1 1-1h5V7.5l3.5 3.5z"/></svg>
+          Get Directions
+        </a>
       </div>
     </div>
   </section>
@@ -256,14 +282,14 @@
   <!-- ============ FOOTER ============ -->
   <footer class="footer" id="contact">
     <div class="footer__grid">
-      <img class="footer__logo" src="assets/images/footer_logo_exact.png" alt="Insomnia Night Club logo" data-reveal loading="lazy" decoding="async" />
+      <img class="footer__logo" src="assets/images/footer_logo_exact.png" alt="Insomnia Night Club logo — best pub &amp; nightclub in Hyderabad" title="Insomnia Night Club, Khajaguda Hyderabad" data-reveal loading="lazy" decoding="async" />
 
       <div class="footer__col footer__col--touch" data-reveal>
         <h4>Get In Touch</h4>
         <ul>
           <li>
             <img class="ficon" src="assets/svg/icon_location.svg" alt="" aria-hidden="true" />
-            <span>Insomnia Night Club, 3rd floor, purple house<br>Khajaguda - Nanakramguda Rd, Hyderabad,<br> Telangana 500008</span>
+            <a href="https://maps.app.goo.gl/w56wHRB6ZYmaSpMt7" target="_blank" rel="noopener">Insomnia Night Club, 3rd floor, purple house<br>Khajaguda - Nanakramguda Rd, Hyderabad,<br> Telangana 500008</a>
           </li>
           <li>
             <img class="ficon" src="assets/svg/icon_mail.svg" alt="" aria-hidden="true" />
@@ -306,6 +332,70 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="js/events-render.js"></script>
   <script src="js/main.js"></script>
+
+  <!-- ============ STRUCTURED DATA (Local SEO) ============ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["NightClub", "BarOrPub"],
+        "@id": "https://insomnianightclub.net/#business",
+        "name": "Insomnia Night Club",
+        "alternateName": "Insomnia — Bar & Night Club",
+        "description": "Insomnia Night Club in Khajaguda, Hyderabad — one of the best pubs and nightclubs in the city. Live DJs, signature cocktails, VIP tables and non-stop late-night energy.",
+        "url": "https://insomnianightclub.net/",
+        "logo": "https://insomnianightclub.net/assets/images/nav_logo_exact.png",
+        "image": [
+          "https://insomnianightclub.net/assets/images/venue_building.jpg"
+        ],
+        "telephone": "+91-9703802000",
+        "email": "socials@insomnianightclub.net",
+        "priceRange": "₹₹",
+        "currenciesAccepted": "INR",
+        "paymentAccepted": "Cash, Credit Card, UPI",
+        "servesCuisine": ["Bar", "Cocktails", "Continental"],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "3rd Floor, Purple House, Khajaguda – Nanakramguda Rd, Khajaguda",
+          "addressLocality": "Hyderabad",
+          "addressRegion": "Telangana",
+          "postalCode": "500008",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 17.41804298,
+          "longitude": 78.36539817
+        },
+        "hasMap": "https://www.google.com/maps/search/?api=1&query=Insomnia%20Night%20Club%2C%20Khajaguda%2C%20Hyderabad",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "12:00",
+            "closes": "00:00"
+          }
+        ],
+        "acceptsReservations": "True",
+        "areaServed": ["Khajaguda", "Nanakramguda", "Gachibowli", "Financial District", "Hyderabad"],
+        "sameAs": [
+          "https://www.instagram.com/insomnia__khajaguda",
+          "https://www.facebook.com/InsomniaKhajaguda"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://insomnianightclub.net/#website",
+        "url": "https://insomnianightclub.net/",
+        "name": "Insomnia Night Club",
+        "inLanguage": "en-IN",
+        "publisher": { "@id": "https://insomnianightclub.net/#business" }
+      }
+    ]
+  }
+  </script>
 </body>
 </html>
